@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://db.onlinewebfonts.com/c/937e458a4cb847952f06fb79fb37e0c4?family=Stevens+Titling+W01+SableBrush");
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary-blue-dark: #081d81;
+  --color-primary-blue-light: #bfd2f8;
+  --color-primary-white: #fcfefe;
+  --color-secondary-white: #fafdfe;
+  --breakpoint-xs: 35rem;
+  --breakpoint-ss: 28rem;
+}
+
+@layer base {
+  .nav-container {
+    @apply fixed z-40 top-0 bg-primary-white w-full px-5 md:px-8 xl:px-13 py-3 text-base font-medium border-b border-primary-blue-dark/10 shadow shadow-primary-blue-dark/10;
+  }
+
+  .navbar {
+    @apply w-full max-w-screen-2xl mx-auto flex justify-between items-center;
+  }
+
+  .button {
+    @apply px-5 py-3 text-base font-normal tracking-wide text-white bg-primary-blue-dark rounded-[30px] cursor-pointer hover:shadow hover:shadow-primary-blue-dark/30;
+  }
+
+  .scale {
+    @apply transition-transform duration-300 transform hover:scale-105;
+  }
+
+  .label {
+    @apply block mb-2 font-medium text-gray-700;
+  }
+
+  .input {
+    @apply block w-full p-2.5 rounded bg-primary-blue-light text-primary-blue-dark placeholder:text-primary-blue-dark focus:outline-none;
+  }
+
+  .text-responsive {
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl;
+  }
+
+  .shadow-dark {
+    @apply shadow-[0px_4px_4px_0px_#bdbebe];
+  }
+}
+
+/* * {
+  border: 1px solid red;
+} */
+
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-feature-settings: normal;
+  scroll-behavior: smooth;
+  scroll-padding: 100px;
+  background-color: var(--color-primary-white);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.hero-text {
+  font-family: "Stevens Titling W01 SableBrush", sans-serif;
+}
+
+.swiper {
+  .swiper-slide {
+    max-width: 378px;
+    box-shadow: 0px 4px 4px 0px #bdbebe !important;
+  }
+  .swiper-slide-large {
+    max-width: 578px;
+    box-shadow: 0px 4px 4px 0px #bdbebe !important;
+  }
+  .swiper-slide-x-large {
+    max-width: 100%;
+    box-shadow: none !important;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: var(--color-primary-blue-dark);
+    background-color: var(--color-primary-blue-light);
+    border-radius: 100%;
+    height: 44px;
+    width: 44px;
+  }
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+}
