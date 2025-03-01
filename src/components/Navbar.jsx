@@ -188,7 +188,7 @@ const Navbar = () => {
             to="/appointment"
             className="button scale flex items-center gap-2"
           >
-            <img src={calendar} loading="lazy" />
+            <img src={calendar} loading="lazy" alt="Calendar Icon" />
             Appointment
           </NavLink>
         </div>

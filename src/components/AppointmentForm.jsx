@@ -15,6 +15,9 @@ const AppointmentForm = () => {
           />
         </div>
         <div>
+          <label htmlFor="gender" className="hidden">
+            Gender
+          </label>
           <select
             id="gender"
             name="gender"
@@ -59,6 +62,9 @@ const AppointmentForm = () => {
           />
         </div>
         <div>
+          <label htmlFor="doctor" className="hidden">
+            Doctor
+          </label>
           <select
             id="doctor"
             name="doctor"
@@ -74,6 +80,9 @@ const AppointmentForm = () => {
           </select>
         </div>
         <div>
+          <label htmlFor="department" className="hidden">
+            Department
+          </label>
           <select
             id="department"
             name="department"
@@ -89,6 +98,9 @@ const AppointmentForm = () => {
           </select>
         </div>
         <div>
+          <label htmlFor="date" className="hidden">
+            Date
+          </label>
           <select
             id="date"
             name="date"
@@ -104,6 +116,9 @@ const AppointmentForm = () => {
           </select>
         </div>
         <div>
+          <label htmlFor="time" className="hidden">
+            Time
+          </label>
           <select
             id="time"
             name="time"

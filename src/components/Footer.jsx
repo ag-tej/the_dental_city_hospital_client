@@ -103,22 +103,42 @@ const Footer = () => {
               <p className="text-lg font-medium">Socials</p>
               <ul className="mt-5 text-3xl flex flex-row items-center gap-4">
                 <li>
-                  <a href="#" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="#"
+                    aria-label="Facebook"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FaFacebookSquare />
                   </a>
                 </li>
                 <li>
-                  <a href="#" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="#"
+                    aria-label="Instagram"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <RiInstagramFill />
                   </a>
                 </li>
                 <li>
-                  <a href="#" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="#"
+                    aria-label="TikTok"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <AiFillTikTok />
                   </a>
                 </li>
                 <li>
-                  <a href="#" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="#"
+                    aria-label="YouTube"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <TfiYoutube className="text-primary-blue-dark bg-white p-[1.5px] rounded" />
                   </a>
                 </li>

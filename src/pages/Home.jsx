@@ -237,40 +237,28 @@ const Home = () => {
                 </p>
                 <div className="flex items-center justify-center gap-3">
                   <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={facebook} loading="lazy" className="size-8" />
+                    <img
+                      src={facebook}
+                      alt="Facebook Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
                   </a>
                   <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={instagram} loading="lazy" className="size-8" />
+                    <img
+                      src={instagram}
+                      alt="Instagram Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
                   </a>
                   <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={linkedin} loading="lazy" className="size-8" />
-                  </a>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide className="bg-primary-blue-light text-primary-blue-dark text-center font-medium rounded">
-              <img
-                src={appointmentBooking}
-                loading="lazy"
-                alt="Image Name"
-                className="w-full aspect-[5/4] object-cover rounded"
-              />
-              <div className="p-4">
-                <p className="text-lg font-medium tracking-wide uppercase mb-1">
-                  Doctor Name
-                </p>
-                <p className="text-base font-normal tracking-wide uppercase mb-3">
-                  Specialty
-                </p>
-                <div className="flex items-center justify-center gap-3">
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={facebook} loading="lazy" className="size-8" />
-                  </a>
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={instagram} loading="lazy" className="size-8" />
-                  </a>
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={linkedin} loading="lazy" className="size-8" />
+                    <img
+                      src={linkedin}
+                      alt="Linkedin Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
                   </a>
                 </div>
               </div>
@@ -291,40 +279,28 @@ const Home = () => {
                 </p>
                 <div className="flex items-center justify-center gap-3">
                   <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={facebook} loading="lazy" className="size-8" />
+                    <img
+                      src={facebook}
+                      alt="Facebook Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
                   </a>
                   <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={instagram} loading="lazy" className="size-8" />
+                    <img
+                      src={instagram}
+                      alt="Instagram Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
                   </a>
                   <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={linkedin} loading="lazy" className="size-8" />
-                  </a>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide className="bg-primary-blue-light text-primary-blue-dark text-center font-medium rounded">
-              <img
-                src={appointmentBooking}
-                loading="lazy"
-                alt="Image Name"
-                className="w-full aspect-[5/4] object-cover rounded"
-              />
-              <div className="p-4">
-                <p className="text-lg font-medium tracking-wide uppercase mb-1">
-                  Doctor Name
-                </p>
-                <p className="text-base font-normal tracking-wide uppercase mb-3">
-                  Specialty
-                </p>
-                <div className="flex items-center justify-center gap-3">
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={facebook} loading="lazy" className="size-8" />
-                  </a>
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={instagram} loading="lazy" className="size-8" />
-                  </a>
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={linkedin} loading="lazy" className="size-8" />
+                    <img
+                      src={linkedin}
+                      alt="Linkedin Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
                   </a>
                 </div>
               </div>
@@ -345,13 +321,28 @@ const Home = () => {
                 </p>
                 <div className="flex items-center justify-center gap-3">
                   <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={facebook} loading="lazy" className="size-8" />
+                    <img
+                      src={facebook}
+                      alt="Facebook Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
                   </a>
                   <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={instagram} loading="lazy" className="size-8" />
+                    <img
+                      src={instagram}
+                      alt="Instagram Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
                   </a>
                   <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={linkedin} loading="lazy" className="size-8" />
+                    <img
+                      src={linkedin}
+                      alt="Linkedin Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
                   </a>
                 </div>
               </div>
@@ -372,13 +363,112 @@ const Home = () => {
                 </p>
                 <div className="flex items-center justify-center gap-3">
                   <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={facebook} loading="lazy" className="size-8" />
+                    <img
+                      src={facebook}
+                      alt="Facebook Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
                   </a>
                   <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={instagram} loading="lazy" className="size-8" />
+                    <img
+                      src={instagram}
+                      alt="Instagram Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
                   </a>
                   <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src={linkedin} loading="lazy" className="size-8" />
+                    <img
+                      src={linkedin}
+                      alt="Linkedin Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
+                  </a>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide className="bg-primary-blue-light text-primary-blue-dark text-center font-medium rounded">
+              <img
+                src={appointmentBooking}
+                loading="lazy"
+                alt="Image Name"
+                className="w-full aspect-[5/4] object-cover rounded"
+              />
+              <div className="p-4">
+                <p className="text-lg font-medium tracking-wide uppercase mb-1">
+                  Doctor Name
+                </p>
+                <p className="text-base font-normal tracking-wide uppercase mb-3">
+                  Specialty
+                </p>
+                <div className="flex items-center justify-center gap-3">
+                  <a href="#" target="_blank" rel="noopener noreferrer">
+                    <img
+                      src={facebook}
+                      alt="Facebook Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
+                  </a>
+                  <a href="#" target="_blank" rel="noopener noreferrer">
+                    <img
+                      src={instagram}
+                      alt="Instagram Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
+                  </a>
+                  <a href="#" target="_blank" rel="noopener noreferrer">
+                    <img
+                      src={linkedin}
+                      alt="Linkedin Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
+                  </a>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide className="bg-primary-blue-light text-primary-blue-dark text-center font-medium rounded">
+              <img
+                src={appointmentBooking}
+                loading="lazy"
+                alt="Image Name"
+                className="w-full aspect-[5/4] object-cover rounded"
+              />
+              <div className="p-4">
+                <p className="text-lg font-medium tracking-wide uppercase mb-1">
+                  Doctor Name
+                </p>
+                <p className="text-base font-normal tracking-wide uppercase mb-3">
+                  Specialty
+                </p>
+                <div className="flex items-center justify-center gap-3">
+                  <a href="#" target="_blank" rel="noopener noreferrer">
+                    <img
+                      src={facebook}
+                      alt="Facebook Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
+                  </a>
+                  <a href="#" target="_blank" rel="noopener noreferrer">
+                    <img
+                      src={instagram}
+                      alt="Instagram Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
+                  </a>
+                  <a href="#" target="_blank" rel="noopener noreferrer">
+                    <img
+                      src={linkedin}
+                      alt="Linkedin Icon"
+                      loading="lazy"
+                      className="size-8"
+                    />
                   </a>
                 </div>
               </div>
