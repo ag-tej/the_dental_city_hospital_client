@@ -1,5 +1,5 @@
 import { ImUserCheck } from "react-icons/im";
-import careerHero from "../assets/career-hero.jpg";
+import careerHero from "../assets/career-hero.webp";
 
 const Career = () => {
   // implement file size check on submit

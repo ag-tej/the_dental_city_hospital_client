@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from "react-router";
-import logo from "../assets/logo_white.png";
+import logo from "../assets/logo_white.webp";
 import { FaFacebookSquare } from "react-icons/fa";
 import { RiInstagramFill, RiSendPlaneFill } from "react-icons/ri";
 import { AiFillTikTok } from "react-icons/ai";

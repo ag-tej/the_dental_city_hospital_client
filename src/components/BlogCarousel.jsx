@@ -4,7 +4,7 @@ import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
 import { NavLink, useLocation } from "react-router";
 import eye from "../assets/eye.svg";
-import appointmentBooking from "../assets/appointment-booking.png"; // to remove
+import appointmentBooking from "../assets/appointment-booking.webp"; // to remove
 
 const BlogCarousel = () => {
   const location = useLocation();

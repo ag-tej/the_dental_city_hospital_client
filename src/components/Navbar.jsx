@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.webp";
 import calendar from "../assets/calendar.svg";
 
 const Navbar = () => {

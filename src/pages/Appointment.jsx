@@ -1,5 +1,5 @@
 import { FaPhoneVolume } from "react-icons/fa6";
-import appointmentHero from "../assets/about-us.png";
+import appointmentHero from "../assets/about-us.webp";
 import AppointmentForm from "../components/AppointmentForm";
 import ContactCards from "../components/ContactCards";
 

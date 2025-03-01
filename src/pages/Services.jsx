@@ -1,4 +1,4 @@
-import servicesHero from "../assets/services-hero.jpg";
+import servicesHero from "../assets/services-hero.webp";
 import ContactCards from "../components/ContactCards";
 
 const Services = () => {

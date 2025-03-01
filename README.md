@@ -1,1 +1,1 @@
-# Dental City Client
+# The Dental City Hospital Client
