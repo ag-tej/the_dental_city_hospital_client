@@ -68,10 +68,10 @@ const Navbar = () => {
               alt="The Dental City"
             />
             <div className="text-center hidden xs:block">
-              <p className="font-medium uppercase tracking-wide">
+              <p className="text-base font-medium uppercase tracking-wide">
                 The Dental City
               </p>
-              <p className="text-sm font-light uppercase tracking-[0.5em]">
+              <p className="text-sm font-light uppercase tracking-[0.6em] ml-1.5">
                 Hospital
               </p>
             </div>

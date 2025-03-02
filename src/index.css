@@ -14,7 +14,7 @@
 
 @layer base {
   .nav-container {
-    @apply fixed z-40 top-0 bg-primary-white w-full px-5 md:px-8 xl:px-13 py-3 text-base font-medium border-b border-primary-blue-dark/10 shadow shadow-primary-blue-dark/10;
+    @apply fixed z-40 top-0 bg-primary-white w-full px-5 md:px-8 xl:px-13 py-3 text-sm sm:text-base font-medium border-b border-primary-blue-dark/10 shadow shadow-primary-blue-dark/10;
   }
 
   .navbar {
@@ -22,7 +22,7 @@
   }
 
   .button {
-    @apply px-5 py-3 text-base font-normal tracking-wide text-white bg-primary-blue-dark rounded-[30px] cursor-pointer hover:shadow hover:shadow-primary-blue-dark/30;
+    @apply px-5 py-3 text-sm sm:text-base font-normal tracking-wide text-white bg-primary-blue-dark rounded-[30px] cursor-pointer hover:shadow hover:shadow-primary-blue-dark/30;
   }
 
   .scale {
@@ -30,15 +30,19 @@
   }
 
   .label {
-    @apply block mb-2 font-medium text-gray-700;
+    @apply text-sm sm:text-base block mb-2 font-medium text-gray-700;
   }
 
   .input {
-    @apply block w-full p-2.5 rounded bg-primary-blue-light text-primary-blue-dark placeholder:text-primary-blue-dark focus:outline-none;
+    @apply text-sm sm:text-base block w-full p-2.5 rounded bg-primary-blue-light text-primary-blue-dark placeholder:text-primary-blue-dark focus:outline-none;
   }
 
-  .text-responsive {
+  .text-responsive-heading {
     @apply text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl;
+  }
+
+  .text-responsive-text {
+    @apply text-sm sm:text-base;
   }
 
   .shadow-dark {
@@ -65,8 +69,45 @@ html {
   display: none;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+select {
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select:focus {
+  outline: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+@media screen and (min-width: 0\0) {
+  select {
+    padding-right: 20px;
+  }
+}
+
 .hero-text {
   font-family: "Stevens Titling W01 SableBrush", sans-serif;
+}
+
+.text-shadow {
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .swiper {

@@ -16,10 +16,10 @@ const Contact = () => {
         style={{ backgroundImage: `url(${contactHero})` }}
       >
         <div className="bg-primary-white/50 h-full w-full p-5 md:p-8 xl:p-13 flex flex-col justify-center">
-          <p className="text-base xl:text-lg text-primary-blue-dark font-medium uppercase tracking-wide">
+          <p className="text-responsive-text xl:text-lg text-primary-blue-dark font-medium uppercase tracking-wide">
             Home / Contact
           </p>
-          <p className="text-responsive text-primary-blue-dark font-semibold tracking-wide uppercase drop-shadow">
+          <p className="text-responsive-heading text-primary-blue-dark font-semibold tracking-wide uppercase drop-shadow">
             Our Contacts
           </p>
         </div>
@@ -27,12 +27,12 @@ const Contact = () => {
       {/* Contact */}
       <div className="mt-16 px-5 md:px-8 xl:px-13 max-w-7xl mx-auto space-y-16">
         <div className="flex flex-col xl:flex-row gap-5 md:gap-8 xl:gap-13 items-center justify-center">
-          <div className="xl:w-1/2">
-            <div className="mb-4">
-              <p className="text-base xl:text-lg text-primary-blue-light font-medium uppercase tracking-wide">
+          <div className="w-full max-w-2xl xl:w-1/2">
+            <div className="mb-5">
+              <p className="text-responsive-text xl:text-lg text-primary-blue-light font-medium uppercase tracking-wide">
                 Get in touch
               </p>
-              <p className="text-responsive text-primary-blue-dark font-semibold uppercase tracking-wide">
+              <p className="text-responsive-heading text-primary-blue-dark font-semibold uppercase tracking-wide">
                 Contact
               </p>
             </div>
@@ -91,7 +91,7 @@ const Contact = () => {
           </div>
           <div className="xl:w-1/2">
             <div className="flex flex-wrap gap-5 items-center justify-center">
-              <div className="bg-primary-blue-light text-primary-blue-dark hover:bg-primary-blue-dark hover:text-primary-blue-light px-5 py-8 rounded w-[230px] h-[200px]">
+              <div className="text-responsive-text bg-primary-blue-light text-primary-blue-dark hover:bg-primary-blue-dark hover:text-primary-blue-light px-5 py-8 rounded w-[230px] h-[200px]">
                 <FaPhoneVolume className="text-2xl mb-5" />
                 <p className="font-medium uppercase mb-3">Emergency</p>
                 <a href="tel:01-6636277" className="block tracking-wide mb-1">
@@ -101,7 +101,7 @@ const Contact = () => {
                   9801222339
                 </a>
               </div>
-              <div className="bg-primary-blue-light text-primary-blue-dark hover:bg-primary-blue-dark hover:text-primary-blue-light px-5 py-8 rounded w-[230px] h-[200px]">
+              <div className="text-responsive-text bg-primary-blue-light text-primary-blue-dark hover:bg-primary-blue-dark hover:text-primary-blue-light px-5 py-8 rounded w-[230px] h-[200px]">
                 <FaLocationDot className="text-2xl mb-5" />
                 <p className="font-medium uppercase mb-3">Location</p>
                 <a
@@ -115,7 +115,7 @@ const Contact = () => {
                   Bhaktapur, Nepal
                 </a>
               </div>
-              <div className="bg-primary-blue-light text-primary-blue-dark hover:bg-primary-blue-dark hover:text-primary-blue-light px-5 py-8 rounded w-[230px] h-[200px]">
+              <div className="text-responsive-text bg-primary-blue-light text-primary-blue-dark hover:bg-primary-blue-dark hover:text-primary-blue-light px-5 py-8 rounded w-[230px] h-[200px]">
                 <FaEnvelope className="text-2xl mb-5" />
                 <p className="font-medium uppercase mb-3">Email</p>
                 <a
@@ -125,7 +125,7 @@ const Contact = () => {
                   thedentalcity@gmail.com
                 </a>
               </div>
-              <div className="bg-primary-blue-light text-primary-blue-dark hover:bg-primary-blue-dark hover:text-primary-blue-light px-5 py-8 rounded w-[230px] h-[200px]">
+              <div className="text-responsive-text bg-primary-blue-light text-primary-blue-dark hover:bg-primary-blue-dark hover:text-primary-blue-light px-5 py-8 rounded w-[230px] h-[200px]">
                 <FaClock className="text-2xl mb-5" />
                 <p className="font-medium uppercase mb-3">Working Hours</p>
                 <p className="mb-1 tracking-wide">Sun-Sat 08:00-20:00</p>

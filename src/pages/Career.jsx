@@ -29,83 +29,43 @@ const Career = () => {
         style={{ backgroundImage: `url(${careerHero})` }}
       >
         <div className="bg-primary-white/50 h-full w-full p-5 md:p-8 xl:p-13 flex flex-col justify-center">
-          <p className="text-base xl:text-lg text-primary-blue-dark font-medium uppercase tracking-wide">
+          <p className="text-responsive-text xl:text-lg text-primary-blue-dark font-medium uppercase tracking-wide">
             Home / Career
           </p>
-          <p className="text-responsive text-primary-blue-dark font-semibold tracking-wide uppercase drop-shadow">
+          <p className="text-responsive-heading text-primary-blue-dark font-semibold tracking-wide uppercase drop-shadow">
             Join Us
           </p>
         </div>
       </div>
       {/* Vacancy */}
-      <div className="bg-primary-blue-light">
-        <div className="max-w-5xl mx-auto p-5 md:p-8 xl:p-13">
-          <p className="text-responsive text-primary-blue-dark text-center mb-8 xl:mb-13 font-semibold tracking-wide uppercase">
+      <div className="p-5 md:p-8 xl:p-13 bg-primary-blue-light">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-responsive-heading text-primary-blue-dark text-center mb-8 xl:mb-13 font-semibold tracking-wide uppercase">
             Vacancy / Recruitment
           </p>
-          <div className="flex flex-wrap gap-8 xl:gap-13 items-center justify-center">
-            <div className="text-center">
-              <p className="text-responsive text-gray-900 font-semibold tracking-wide">
-                Job Title
-              </p>
-              <p className="text-base xl:text-lg text-primary-blue-dark mb-3">
-                Job Date
-              </p>
-              <p className="text-gray-900 tracking-wide leading-relaxed max-w-sm">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
-                iusto tenetur recusandae vel commodi obcaecati repellat minus
-                nulla rerum omnis, cum laboriosam repellendus vero neque dolorem
-                in placeat architecto numquam.
-              </p>
-            </div>
-            <div className="text-center">
-              <p className="text-responsive text-gray-900 font-semibold tracking-wide">
-                Job Title
-              </p>
-              <p className="text-base xl:text-lg text-primary-blue-dark mb-3">
-                Job Date
-              </p>
-              <p className="text-gray-900 tracking-wide leading-relaxed max-w-sm">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex cum
-                commodi, pariatur iure, nostrum assumenda omnis eius adipisci
-                doloremque eveniet natus consectetur tempora corporis eligendi
-                officia hic architecto molestias qui?
-              </p>
-            </div>
-            <div className="text-center">
-              <p className="text-responsive text-gray-900 font-semibold tracking-wide">
-                Job Title
-              </p>
-              <p className="text-base xl:text-lg text-primary-blue-dark mb-3">
-                Job Date
-              </p>
-              <p className="text-gray-900 tracking-wide leading-relaxed max-w-sm">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. A nulla
-                eaque quaerat, deserunt ipsa, quam saepe unde voluptas magni
-                nihil corrupti non? Quidem quisquam quia voluptate ut labore
-                maiores harum!
-              </p>
-            </div>
-            <div className="text-center">
-              <p className="text-responsive text-gray-900 font-semibold tracking-wide">
-                Job Title
-              </p>
-              <p className="text-base xl:text-lg text-primary-blue-dark mb-3">
-                Job Date
-              </p>
-              <p className="text-gray-900 tracking-wide leading-relaxed max-w-sm">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Explicabo officiis odit nesciunt eveniet exercitationem, fugiat
-                repudiandae laudantium qui, labore inventore excepturi quis,
-                animi unde? Molestiae atque animi nemo similique inventore.
-              </p>
-            </div>
+          <div className="flex flex-wrap gap-8 xl:gap-13 items-center justify-center lg:justify-between">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <div key={index} className="text-center">
+                <p className="text-responsive-heading text-gray-900 font-semibold tracking-wide mb-1">
+                  Job Title
+                </p>
+                <p className="text-responsive-text xl:text-lg text-primary-blue-dark mb-3">
+                  Job Date
+                </p>
+                <p className="text-responsive-text text-gray-900 tracking-wide leading-relaxed max-w-sm">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
+                  iusto tenetur recusandae vel commodi obcaecati repellat minus
+                  nulla rerum omnis, cum laboriosam repellendus vero neque
+                  dolorem in placeat architecto numquam.
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
       {/* Application Form */}
       <div className="my-16 px-5 md:px-8 xl:px-13">
-        <p className="text-responsive text-primary-blue-dark text-center mb-5 font-semibold tracking-wide uppercase">
+        <p className="text-responsive-heading text-primary-blue-dark text-center mb-5 font-semibold tracking-wide uppercase">
           Application Form
         </p>
         <div className="bg-primary-blue-dark max-w-2xl mx-auto p-8 rounded">
@@ -176,7 +136,7 @@ const Career = () => {
                   htmlFor="earliest-start-date"
                   className="label text-primary-white"
                 >
-                  Phone
+                  Earliest Start Date
                 </label>
                 <input
                   type="date"
