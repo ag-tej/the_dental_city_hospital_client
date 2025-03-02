@@ -1,5 +1,6 @@
 import servicesHero from "../assets/services-hero.webp";
 import ContactCards from "../components/ContactCards";
+import { serviceData } from "../data/ServiceData";
 
 const Services = () => {
   return (
@@ -21,28 +22,30 @@ const Services = () => {
       {/* Services */}
       <div className="mt-16 px-5 md:px-8 xl:px-13">
         <div className="max-w-7xl mx-auto space-y-16">
-          <div className="flex flex-col md:flex-row gap-5 md:gap-8 xl:gap-13 items-center justify-center">
-            <div className="md:w-1/2 text-center md:text-left">
-              <p className="text-responsive-heading text-primary-blue-dark font-semibold tracking-wide">
-                Oral Medicine & Radiology
-              </p>
-              <ul className="mt-3 ml-5 md:list-disc tracking-wide leading-relaxed text-responsive-text xl:text-lg">
-                <li>All kind of soft and hard tissue diagnosis.</li>
-                <li>Medical treatment of oral diseases.</li>
-                <li>Treatment of temporomandibular joint disorders.</li>
-                <li>
-                  All kind of radiological diagnosis: x-ray, CBCT, OPG etc.
-                </li>
-              </ul>
+          {serviceData.map((item) => (
+            <div
+              key={item.id}
+              className="flex flex-col md:flex-row gap-5 md:gap-8 xl:gap-13 md:items-center md:justify-center  max-w-lg md:max-w-full mx-auto"
+            >
+              <div className="md:w-1/2">
+                <p className="text-responsive-heading text-primary-blue-dark font-semibold tracking-wide">
+                  {item.name}
+                </p>
+                <ul className="mt-3 ml-5 list-disc tracking-wide leading-relaxed text-responsive-text xl:text-lg">
+                  {item.description.map((desc, index) => (
+                    <li key={index}>{desc}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="md:w-1/2 max-w-lg">
+                <img
+                  src={item.image}
+                  alt="Service Name"
+                  className="w-full aspect-[3/2] object-cover rounded-4xl shadow-dark"
+                />
+              </div>
             </div>
-            <div className="md:w-1/2 max-w-lg">
-              <img
-                src={servicesHero}
-                alt="Service Name"
-                className="w-full aspect-[3/2] object-cover rounded-4xl shadow-dark"
-              />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
       {/* Contact */}
