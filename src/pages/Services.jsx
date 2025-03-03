@@ -25,9 +25,9 @@ const Services = () => {
           {serviceData.map((item) => (
             <div
               key={item.id}
-              className="flex flex-col md:flex-row gap-5 md:gap-8 xl:gap-13 md:items-center md:justify-center  max-w-lg md:max-w-full mx-auto"
+              className="flex flex-col md:flex-row gap-5 md:gap-8 xl:gap-13 md:items-center md:justify-center max-w-lg md:max-w-full mx-auto"
             >
-              <div className="md:w-1/2">
+              <div className="md:w-1/2 max-w-md">
                 <p className="text-responsive-heading text-primary-blue-dark font-semibold tracking-wide">
                   {item.name}
                 </p>

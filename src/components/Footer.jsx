@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <footer className="z-30 bg-primary-blue-dark px-5 md:px-8 xl:px-13 py-13 text-white mt-auto">
       <div className="w-full max-w-screen-2xl mx-auto">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-start justify-between gap-8 pb-13 border-b">
+        <div className="max-w-6xl mx-auto flex flex-wrap items-start justify-between gap-8 pb-13 border-b">
           <a href="/" className="flex flex-col items-center gap-3">
             <img
               src={logo}
@@ -107,7 +107,7 @@ const Footer = () => {
               <p className="text-responsive-text xl:text-lg font-medium">
                 Socials
               </p>
-              <ul className="mt-5 text-3xl flex flex-row items-center gap-4">
+              <ul className="mt-3 text-3xl flex flex-row items-center gap-4">
                 <li>
                   <a
                     href="https://www.facebook.com/share/1KjcibRjW9/"
@@ -154,7 +154,7 @@ const Footer = () => {
               <p className="text-responsive-text xl:text-lg font-medium">
                 Newsletter
               </p>
-              <div className="relative mt-5">
+              <div className="relative mt-3">
                 <input
                   type="email"
                   placeholder="Enter your email"

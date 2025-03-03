@@ -78,15 +78,15 @@ const Home = () => {
       </div>
       {/* About Us */}
       <div id="about-us" className="mt-16 px-5 md:px-8 xl:px-13">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-5 md:gap-8 xl:gap-13 items-center justify-between">
-          <div className="text-center lg:text-left lg:w-1/2">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-5 md:gap-8 xl:gap-13 items-center justify-center">
+          <div className="text-center lg:text-left lg:w-1/2 max-w-lg">
             <p className="text-responsive-heading text-primary-blue-dark font-semibold uppercase tracking-wide">
               About Us
             </p>
             <p className="text-responsive-text xl:text-lg text-primary-blue-light font-medium uppercase tracking-wide">
               Know who we are
             </p>
-            <p className="text-responsive-text font-normal text-gray-900 leading-relaxed mt-4 max-w-2xl">
+            <p className="text-responsive-text font-normal text-gray-900 leading-relaxed mt-4">
               Welcome to The Dental City, the ultimate destination for world
               class dental care in Nepal located in the heritage city of
               Bhaktapur. We excel in the field of dentistry as in braces,
@@ -101,7 +101,7 @@ const Home = () => {
               src={aboutUs}
               loading="lazy"
               alt="About Us Image"
-              className="w-full max-w-lg mx-auto h-auto object-cover rounded-4xl"
+              className="w-full max-w-lg mx-auto lg:ml-auto h-auto object-cover rounded-4xl"
             />
           </div>
         </div>
