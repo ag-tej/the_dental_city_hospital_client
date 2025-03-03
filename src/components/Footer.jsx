@@ -160,7 +160,7 @@ const Footer = () => {
                   placeholder="Enter your email"
                   className="input pr-10"
                 />
-                <RiSendPlaneFill className="absolute text-2xl text-primary-blue-dark top-1/2 right-2.5 transform -translate-y-1/2" />
+                <RiSendPlaneFill className="absolute text-2xl text-primary-blue-dark top-1/2 right-2.5 transform -translate-y-1/2 cursor-pointer" />
               </div>
             </div>
           </div>

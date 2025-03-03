@@ -84,7 +84,7 @@ const Contact = () => {
                 placeholder="Message"
                 required
               />
-              <button className="text-primary-blue-dark font-medium tracking-wide bg-primary-blue-light rounded-b py-3 uppercase">
+              <button className="button text-primary-blue-dark bg-primary-blue-light font-medium rounded-none rounded-b uppercase hover:shadow-none">
                 Submit
               </button>
             </form>
