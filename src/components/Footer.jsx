@@ -110,7 +110,7 @@ const Footer = () => {
               <ul className="mt-5 text-3xl flex flex-row items-center gap-4">
                 <li>
                   <a
-                    href="#"
+                    href="https://www.facebook.com/share/1KjcibRjW9/"
                     aria-label="Facebook"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -120,7 +120,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="https://www.instagram.com/the_dental_city_hospital?igsh=bW1ibmlsY2Fhajlu"
                     aria-label="Instagram"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -130,7 +130,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="https://www.tiktok.com/@thedentalcityhospital?_t=ZS-8uMbjB4zKKo&_r=1"
                     aria-label="TikTok"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -140,7 +140,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="https://youtube.com/@thedentalawarenesschannelo2798?si=FclCxPLGVSuUx8wD"
                     aria-label="YouTube"
                     target="_blank"
                     rel="noopener noreferrer"

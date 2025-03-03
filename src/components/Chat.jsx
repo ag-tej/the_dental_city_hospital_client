@@ -1,11 +1,11 @@
 const Chat = () => {
   return (
     <a
-      href="#"
+      href="https://wa.me/9779801222339"
       target="_blank"
       rel="noreferrer noopener"
       className="z-10 fixed bottom-8 right-8 inline-flex items-center justify-center size-12 rounded-full bg-primary-blue-dark"
-      aria-label="Contact us on WhatsApp"
+      aria-label="Free Consultation"
     >
       <div className="absolute top-0 left-0 w-full h-full rounded-full bg-primary-blue-light animate-ping"></div>
       <div className="relative">
