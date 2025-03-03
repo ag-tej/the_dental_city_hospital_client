@@ -40,7 +40,7 @@ const Services = () => {
               <div className="md:w-1/2 max-w-lg">
                 <img
                   src={item.image}
-                  alt="Service Name"
+                  alt={item.name}
                   className="w-full aspect-[3/2] object-cover rounded-4xl shadow-dark"
                 />
               </div>
