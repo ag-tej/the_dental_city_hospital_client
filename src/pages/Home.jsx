@@ -16,6 +16,7 @@ import linkedin from "../assets/linkedin.svg";
 import ContactCards from "../components/ContactCards";
 import BlogCarousel from "../components/BlogCarousel";
 import AppointmentForm from "../components/AppointmentForm";
+import { serviceData } from "../data/ServiceData";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -143,19 +144,19 @@ const Home = () => {
               navigation={true}
               modules={[Autoplay, Navigation]}
             >
-              {Array.from({ length: 6 }).map((_, index) => (
+              {serviceData.map((item) => (
                 <SwiperSlide
-                  key={index}
+                  key={item.id}
                   className="bg-primary-blue-dark text-white text-center font-medium rounded-4xl mb-2"
                 >
                   <img
-                    src={appointmentBooking}
+                    src={item.image}
                     loading="lazy"
-                    alt="Image Name"
+                    alt={item.name}
                     className="rounded-4xl w-full aspect-[5/4] object-cover"
                   />
                   <p className="p-4 text-responsive-text xl:text-lg tracking-wide">
-                    Digital Dentistry
+                    {item.name}
                   </p>
                 </SwiperSlide>
               ))}
