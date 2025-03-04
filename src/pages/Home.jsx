@@ -40,7 +40,7 @@ const Home = () => {
           alt="Hero Image"
           className="max-h-[500px] xl:max-h-[600px] min-h-80 w-full object-cover"
         />
-        <div className="absolute left-8 ss:left-13 xs:left-18 sm:left-21 lg:left-25 top-28 sm:top-32 md:top-36 lg:top-40 xl:top-44 hero-text text-responsive-heading text-primary-blue-dark font-medium text-shadow uppercase">
+        <div className="absolute left-8 ss:left-13 xs:left-18 sm:left-21 lg:left-25 top-28 sm:top-32 md:top-36 lg:top-40 xl:top-44 hero-text text-responsive-heading text-primary-blue-dark font-medium uppercase">
           <p>"AI is not yet a tool in</p>
           <p>health care, digitalization is."</p>
         </div>
