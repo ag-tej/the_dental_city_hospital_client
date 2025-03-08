@@ -3,11 +3,29 @@ import "swiper/swiper-bundle.css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
 import { NavLink, useLocation } from "react-router";
+import useAxios from "../admin/UseAxios";
+import { useCallback, useEffect, useRef, useState } from "react";
+import moment from "moment";
 import eye from "../assets/eye.svg";
-import appointmentBooking from "../assets/appointment-booking.webp"; // to remove
 
 const BlogCarousel = () => {
   const location = useLocation();
+  const axiosInstance = useAxios();
+  const axiosRef = useRef(axiosInstance);
+  const [blogs, setBlogs] = useState([]);
+
+  const fetchBlogs = useCallback(async () => {
+    try {
+      const response = await axiosRef.current.get("/blog/no-content");
+      if (response.data.success) setBlogs(response.data.data);
+    } catch (error) {
+      window.alert(error.response?.data?.message || "Something went wrong");
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchBlogs();
+  }, [fetchBlogs]);
 
   return (
     <div id="blogs" className="mt-16 px-5 md:px-8 xl:px-13">
@@ -38,43 +56,56 @@ const BlogCarousel = () => {
             navigation={true}
             modules={[Autoplay, Navigation]}
           >
-            {Array.from({ length: 6 }).map((_, index) => (
-              <SwiperSlide
-                key={index}
-                className="swiper-slide-large mb-2 rounded"
-              >
-                <NavLink to="/blog/slug">
-                  {/* add dynamic slug */}
-                  <div className="w-full h-full rounded flex flex-col xs:flex-row gap-2 bg-primary-white border border-black/5">
-                    <img
-                      src={appointmentBooking}
-                      loading="lazy"
-                      alt="Image Name"
-                      className="xs:w-2/5 aspect-[5/3] xs:aspect-square object-cover rounded-l"
-                    />
-                    <div className="p-5 flex flex-col">
-                      <p className="text-responsive-text text-primary-blue-dark tracking-wide mb-3">
-                        Thursday 05, September 2021 | By Author
-                      </p>
-                      <p className="text-responsive-text xl:text-lg font-normal text-gray-900 tracking-wide mb-3">
-                        Article Title Goes Here, but not too long
-                      </p>
-                      <div className="flex items-center gap-2 mt-auto">
-                        <img
-                          src={eye}
-                          loading="lazy"
-                          alt="View Icon"
-                          className="size-5"
-                        />
-                        <p className="text-responsive-text text-gray-900 font-medium">
-                          68
+            {blogs && blogs.length > 0 ? (
+              blogs.map((item) => (
+                <SwiperSlide
+                  key={item._id}
+                  className="swiper-slide-large mb-2 rounded"
+                >
+                  <NavLink
+                    to={`/blog/${item._id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="w-full h-full rounded flex flex-col xs:flex-row gap-2 bg-primary-white border border-black/5">
+                      <img
+                        src={item.cover_image}
+                        loading="lazy"
+                        alt="Image Name"
+                        className="xs:w-2/5 aspect-[5/3] xs:aspect-square object-cover rounded-l"
+                      />
+                      <div className="p-5 flex flex-col">
+                        <p className="text-responsive-text text-primary-blue-dark tracking-wide mb-3">
+                          {`${moment(item.createdAt).format(
+                            "dddd, MMMM D, YYYY"
+                          )} | ${item.author}`}
                         </p>
+                        <p className="text-responsive-text xl:text-lg font-normal text-gray-900 tracking-wide mb-3">
+                          {item.title}
+                        </p>
+                        <div className="flex items-center gap-2 mt-auto">
+                          <img
+                            src={eye}
+                            loading="lazy"
+                            alt="View Icon"
+                            className="size-5"
+                          />
+                          <p className="text-responsive-text text-gray-900 font-medium">
+                            {item.view_count}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </NavLink>
+                  </NavLink>
+                </SwiperSlide>
+              ))
+            ) : (
+              <SwiperSlide>
+                <p className="text-red-600 font-medium italic">
+                  Nothing to show!
+                </p>
               </SwiperSlide>
-            ))}
+            )}
           </Swiper>
         </div>
       </div>

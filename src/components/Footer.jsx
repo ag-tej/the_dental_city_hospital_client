@@ -4,6 +4,8 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { RiInstagramFill, RiSendPlaneFill } from "react-icons/ri";
 import { AiFillTikTok } from "react-icons/ai";
 import { TfiYoutube } from "react-icons/tfi";
+import useAxios from "../admin/UseAxios";
+import { useState } from "react";
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -15,6 +17,33 @@ const Footer = () => {
         doctorsSection.scrollIntoView({ behavior: "smooth" });
       }
     }, 300);
+  };
+
+  const axiosInstance = useAxios();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsLoading(true);
+    const formData = new FormData(event.target);
+    const data = {
+      email: formData.get("email"),
+    };
+    try {
+      const response = await axiosInstance.post("/mailingList/create", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.data.success) {
+        window.alert("Your email has been recorded!");
+        event.target.reset();
+      }
+    } catch (error) {
+      window.alert(error.response?.data?.message || "Failed to record email");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -155,19 +184,45 @@ const Footer = () => {
                 Newsletter
               </p>
               <div className="relative mt-3">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="input pr-10"
-                />
-                <RiSendPlaneFill className="absolute text-2xl text-primary-blue-dark top-1/2 right-2.5 transform -translate-y-1/2 cursor-pointer" />
+                <form onSubmit={handleSubmit}>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    className={`input pr-10 ${
+                      isLoading && "cursor-not-allowed"
+                    }`}
+                    placeholder="Enter your email"
+                    required
+                    disabled={isLoading}
+                  />
+                  <button
+                    aria-label="Subscribe"
+                    type="submit"
+                    className={`absolute top-1/2 right-2.5 transform -translate-y-1/2 ${
+                      isLoading
+                        ? "cursor-not-allowed opacity-60"
+                        : "cursor-pointer"
+                    }`}
+                    disabled={isLoading}
+                  >
+                    <RiSendPlaneFill className="text-2xl text-primary-blue-dark" />
+                  </button>
+                </form>
               </div>
             </div>
           </div>
         </div>
         {/* Footer Copyright */}
-        <div className="mt-13 font-medium opacity-80 text-sm text-center">
+        <div className="mt-13 max-w-6xl mx-auto font-medium opacity-80 text-xs md:text-sm flex flex-col sm:flex-row gap-3 sm:gap-13 items-center justify-center sm:justify-between">
           <p>&#169;2025 All Rights Reserved | The Dental City Hospital</p>
+          <a
+            href="https://portfolio.tejagrawal.com.np/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Designed & Developed by Yeti Pixels
+          </a>
         </div>
       </div>
     </footer>

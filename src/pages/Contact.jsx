@@ -1,3 +1,5 @@
+import { useState } from "react";
+import useAxios from "../admin/UseAxios";
 import contactHero from "../assets/contact-hero.webp";
 import BlogCarousel from "../components/BlogCarousel";
 import {
@@ -8,6 +10,40 @@ import {
 } from "react-icons/fa6";
 
 const Contact = () => {
+  const axiosInstance = useAxios();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsLoading(true);
+    const formData = new FormData(event.target);
+    const data = {
+      fullname: formData.get("fullname"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      message: formData.get("message"),
+    };
+    try {
+      const response = await axiosInstance.post(
+        "/contactMessage/create",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.data.success) {
+        window.alert("Your message has been recorded!");
+        event.target.reset();
+      }
+    } catch (error) {
+      window.alert(error.response?.data?.message || "Failed to submit message");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <section>
       {/* Hero */}
@@ -36,18 +72,22 @@ const Contact = () => {
                 Contact
               </p>
             </div>
-            <form action="#" className="grid grid-cols-1 gap-[1px]">
+            <form
+              onSubmit={handleSubmit}
+              className="grid grid-cols-1 gap-[1px]"
+            >
               <div className="grid grid-cols-1 ss:grid-cols-2 gap-[1px]">
                 <div>
                   <input
                     type="text"
-                    id="fullName"
-                    name="fullName"
-                    className="input bg-primary-blue-dark text-white placeholder:text-white h-full py-3 px-5 rounded-none rounded-t ss:rounded-tl"
-                    value=""
-                    onChange=""
+                    id="fullname"
+                    name="fullname"
+                    className={`input bg-primary-blue-dark text-white placeholder:text-white h-full py-3 px-5 rounded-none rounded-t ss:rounded-tl ${
+                      isLoading && "cursor-not-allowed"
+                    }`}
                     placeholder="Full Name"
                     required
+                    disabled={isLoading}
                   />
                 </div>
                 <div>
@@ -56,11 +96,12 @@ const Contact = () => {
                     min={9111111111}
                     id="phone"
                     name="phone"
-                    className="input bg-primary-blue-dark text-white placeholder:text-white h-full py-3 px-5 rounded-none"
-                    value=""
-                    onChange=""
+                    className={`input bg-primary-blue-dark text-white placeholder:text-white h-full py-3 px-5 rounded-none ${
+                      isLoading && "cursor-not-allowed"
+                    }`}
                     placeholder="Phone"
                     required
+                    disabled={isLoading}
                   />
                 </div>
               </div>
@@ -68,24 +109,32 @@ const Contact = () => {
                 type="email"
                 id="email"
                 name="email"
-                className="input bg-primary-blue-dark text-white placeholder:text-white h-full py-3 px-5 rounded-none"
-                value=""
-                onChange=""
+                className={`input bg-primary-blue-dark text-white placeholder:text-white h-full py-3 px-5 rounded-none ${
+                  isLoading && "cursor-not-allowed"
+                }`}
                 placeholder="Email"
                 required
+                disabled={isLoading}
               />
               <textarea
                 rows={5}
                 id="message"
                 name="message"
-                className="input bg-primary-blue-dark text-white placeholder:text-white h-full py-3 px-5 rounded-none"
-                value=""
-                onChange=""
+                className={`input bg-primary-blue-dark text-white placeholder:text-white h-full py-3 px-5 rounded-none ${
+                  isLoading && "cursor-not-allowed"
+                }`}
                 placeholder="Message"
                 required
+                disabled={isLoading}
               />
-              <button className="button text-primary-blue-dark bg-primary-blue-light font-medium rounded-none rounded-b uppercase hover:shadow-none">
-                Submit
+              <button
+                type="submit"
+                className={`button text-primary-blue-dark bg-primary-blue-light font-medium rounded-none rounded-b uppercase hover:shadow-none ${
+                  isLoading ? "cursor-not-allowed opacity-60" : "cursor-pointer"
+                }`}
+                disabled={isLoading}
+              >
+                {isLoading ? "Submitting..." : "Submit"}
               </button>
             </form>
           </div>

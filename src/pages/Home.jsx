@@ -1,14 +1,18 @@
+import { useCallback, useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
+import useAxios from "../admin/UseAxios";
 import hero from "../assets/hero.webp";
 import calendar2 from "../assets/calender2.svg";
 import group from "../assets/group.svg";
 import list from "../assets/list.svg";
 import aboutUs from "../assets/about-us.webp";
 import appointmentBooking from "../assets/appointment-booking.webp";
+import femaleDoctor from "../assets/female-doctor.jpg";
+import maleDoctor from "../assets/male-doctor.jpg";
 import testimonialsBackground from "../assets/testimonials-background.webp";
 import facebook from "../assets/facebook.svg";
 import instagram from "../assets/instagram.svg";
@@ -29,6 +33,33 @@ const Home = () => {
       }
     }, 300);
   };
+
+  const axiosInstance = useAxios();
+  const axiosRef = useRef(axiosInstance);
+  const [doctors, setDoctors] = useState([]);
+  const [testimonials, setTestimonials] = useState([]);
+
+  const fetchTestimonials = useCallback(async () => {
+    try {
+      const response = await axiosRef.current.get("/testimonial");
+      if (response.data.success) setTestimonials(response.data.data);
+    } catch (error) {
+      window.alert(error.response?.data?.message || "Something went wrong");
+    }
+  }, []);
+  const fetchDoctors = useCallback(async () => {
+    try {
+      const response = await axiosRef.current.get("/doctor");
+      if (response.data.success) setDoctors(response.data.data);
+    } catch (error) {
+      window.alert(error.response?.data?.message || "Something went wrong");
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchDoctors();
+    fetchTestimonials();
+  }, [fetchTestimonials, fetchDoctors]);
 
   return (
     <section>
@@ -185,53 +216,85 @@ const Home = () => {
               navigation={true}
               modules={[Autoplay, Navigation]}
             >
-              {Array.from({ length: 6 }).map((_, index) => (
-                <SwiperSlide
-                  key={index}
-                  className="bg-primary-blue-light text-primary-blue-dark text-center font-medium rounded mb-2"
-                >
-                  <img
-                    src={appointmentBooking}
-                    loading="lazy"
-                    alt="Image Name"
-                    className="w-full aspect-[5/4] object-cover rounded"
-                  />
-                  <div className="p-4">
-                    <p className="text-responsive-text xl:text-lg font-medium tracking-wide uppercase mb-1">
-                      Doctor Name
-                    </p>
-                    <p className="text-responsive-text font-normal tracking-wide uppercase mb-3">
-                      Specialty
-                    </p>
-                    <div className="flex items-center justify-center gap-3">
-                      <a href="#" target="_blank" rel="noopener noreferrer">
-                        <img
-                          src={facebook}
-                          alt="Facebook Icon"
-                          loading="lazy"
-                          className="size-8"
-                        />
-                      </a>
-                      <a href="#" target="_blank" rel="noopener noreferrer">
-                        <img
-                          src={instagram}
-                          alt="Instagram Icon"
-                          loading="lazy"
-                          className="size-8"
-                        />
-                      </a>
-                      <a href="#" target="_blank" rel="noopener noreferrer">
-                        <img
-                          src={linkedin}
-                          alt="Linkedin Icon"
-                          loading="lazy"
-                          className="size-8"
-                        />
-                      </a>
+              {doctors && doctors.length > 0 ? (
+                doctors.map((item) => (
+                  <SwiperSlide
+                    key={item._id}
+                    className="bg-primary-blue-light text-primary-blue-dark text-center font-medium rounded mb-2"
+                  >
+                    <img
+                      src={
+                        item.profile_image
+                          ? item.profile_image
+                          : item.gender == "Male"
+                          ? maleDoctor
+                          : femaleDoctor
+                      }
+                      loading="lazy"
+                      alt={item.name}
+                      className="w-full aspect-[5/4] object-cover rounded"
+                    />
+                    <div className="p-4">
+                      <p className="text-responsive-text xl:text-lg font-medium tracking-wide uppercase mb-1">
+                        {item.name}
+                      </p>
+                      <p className="text-responsive-text font-normal tracking-wide uppercase mb-3">
+                        {item.department}
+                      </p>
+                      <div className="flex items-center justify-center gap-3 h-8">
+                        {item.facebook_link && (
+                          <a
+                            href={item.facebook_link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <img
+                              src={facebook}
+                              alt="Facebook Icon"
+                              loading="lazy"
+                              className="size-8"
+                            />
+                          </a>
+                        )}
+                        {item.instagram_link && (
+                          <a
+                            href={item.instagram_link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <img
+                              src={instagram}
+                              alt="Instagram Icon"
+                              loading="lazy"
+                              className="size-8"
+                            />
+                          </a>
+                        )}
+                        {item.linkedin_link && (
+                          <a
+                            href={item.linkedin_link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <img
+                              src={linkedin}
+                              alt="Linkedin Icon"
+                              loading="lazy"
+                              className="size-8"
+                            />
+                          </a>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  </SwiperSlide>
+                ))
+              ) : (
+                <SwiperSlide>
+                  <p className="text-red-600 font-medium italic">
+                    Nothing to show!
+                  </p>
                 </SwiperSlide>
-              ))}
+              )}
             </Swiper>
           </div>
         </div>
@@ -258,26 +321,30 @@ const Home = () => {
                 navigation={true}
                 modules={[Autoplay, Navigation]}
               >
-                {Array.from({ length: 6 }).map((_, index) => (
-                  <SwiperSlide
-                    key={index}
-                    className="mb-2 swiper-slide-x-large"
-                  >
-                    <div className="flex flex-col items-center justify-center max-w-3xl mx-auto">
-                      <p className="text-primary-white text-responsive-text xl:text-lg font-medium italic tracking-wide text-center leading-relaxed">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Voluptas placeat obcaecati in necessitatibus
-                        perferendis cupiditate laudantium nesciunt tempora, eius
-                        labore, minus nulla officia? Quasi, itaque molestias
-                        perspiciatis voluptatibus error repellat.
-                      </p>
-                      <div className="w-xs h-0.5 mt-16 mb-8 bg-primary-blue-light" />
-                      <p className="text-primary-white text-responsive-text xl:text-lg font-medium tracking-wide text-center leading-relaxed">
-                        Rabi Shah
-                      </p>
-                    </div>
+                {testimonials && testimonials.length > 0 ? (
+                  testimonials.map((item) => (
+                    <SwiperSlide
+                      key={item._id}
+                      className="mb-2 swiper-slide-x-large"
+                    >
+                      <div className="flex flex-col items-center justify-center max-w-3xl mx-auto">
+                        <p className="text-primary-white text-responsive-text xl:text-lg font-medium italic tracking-wide text-center leading-relaxed">
+                          {item.client_message}
+                        </p>
+                        <div className="w-xs h-0.5 mt-16 mb-8 bg-primary-blue-light" />
+                        <p className="text-primary-white text-responsive-text xl:text-lg font-medium tracking-wide text-center leading-relaxed">
+                          {item.client_name}
+                        </p>
+                      </div>
+                    </SwiperSlide>
+                  ))
+                ) : (
+                  <SwiperSlide>
+                    <p className="text-red-600 font-medium italic">
+                      Nothing to show!
+                    </p>
                   </SwiperSlide>
-                ))}
+                )}
               </Swiper>
             </div>
           </div>

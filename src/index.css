@@ -54,7 +54,7 @@
   }
 
   .admin-input {
-    @apply w-full p-2 mb-5 text-gray-900 placeholder:text-gray-500 border border-gray-500 rounded;
+    @apply w-full px-5 py-3 mb-5 text-gray-900 placeholder:text-gray-500 border border-gray-500 rounded;
   }
 }
 
@@ -68,7 +68,7 @@ html {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   font-feature-settings: normal;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
   scroll-padding: 100px;
   background-color: var(--color-primary-white);
 }
@@ -144,4 +144,23 @@ select::-ms-expand {
     font-size: 1.25rem;
     font-weight: bold;
   }
+}
+
+/* Text Editor Styles */
+.ProseMirror {
+  padding: 12px 20px !important;
+}
+
+.ProseMirror ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.ProseMirror ol {
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+.m_dd3f7539 {
+  border-color: #6a7282 !important;
 }

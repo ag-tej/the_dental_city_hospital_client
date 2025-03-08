@@ -1,23 +1,48 @@
+import { useState, useEffect, useCallback, useRef } from "react";
+import { useParams } from "react-router";
+import moment from "moment";
+import useAxios from "../admin/UseAxios";
+import TextReader from "../admin/components/TextReader";
 import BlogCarousel from "../components/BlogCarousel";
 import eye from "../assets/eye.svg";
 
 const SingleBlog = () => {
+  const axiosInstance = useAxios();
+  const axiosRef = useRef(axiosInstance);
+  const { id } = useParams();
+  const [blog, setBlog] = useState([]);
+
+  const fetchBlog = useCallback(async () => {
+    try {
+      const response = await axiosRef.current.get(`/blog/${id}`);
+      if (response.data.success) setBlog(response.data.data);
+    } catch (error) {
+      window.alert(error.response?.data?.message || "Something went wrong");
+    }
+  }, [id]);
+
+  useEffect(() => {
+    fetchBlog();
+  }, [fetchBlog]);
+
   return (
     <section className="mt-32 px-5 md:px-8 xl:px-13">
       {/* Single Article */}
       <div className="max-w-4xl mx-auto">
         <article>
           <p className="text-responsive-heading text-primary-blue-dark font-semibold uppercase tracking-wide mb-5">
-            Article Title Goes Here, But not too long
+            {blog.title}
           </p>
           <img
-            src="https://marketplace.canva.com/EAFAs6po4S4/1/0/1600w/canva-brown-neutral-minimalist-web-design-blog-banner-NoU393qujqk.jpg"
+            src={blog.cover_image}
             alt="Blog Banner"
-            className="w-full aspect-[3/2] max-h-[500px] object-cover rounded mb-3"
+            className="w-full aspect-[3/2] max-h-[500px] object-cover rounded mb-3 border border-gray-300"
           />
-          <div className="flex gap-5 justify-between items-center mb-5">
+          <div className="flex gap-5 justify-between items-center mb-8">
             <p className="text-responsive-text text-primary-blue-dark tracking-wide">
-              Thursday 05, September 2021 | By Author
+              {`${moment(blog.createdAt).format(
+                "dddd, MMMM D, YYYY"
+              )} | Author: ${blog.author}`}
             </p>
             <div className="flex items-center gap-2 mt-auto">
               <img
@@ -26,15 +51,10 @@ const SingleBlog = () => {
                 alt="View Icon"
                 className="size-6"
               />
-              <p className="text-gray-900 font-medium">68</p>
+              <p className="text-gray-900 font-medium">{blog.view_count}</p>
             </div>
           </div>
-          <p className="text-responsive-text text-gray-900 tracking-wide leading-relaxed text-justify">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit quos
-            sequi, omnis sed recusandae rem molestias at corporis cumque dicta?
-            At, ea quasi! Consectetur tempora odio excepturi maxime doloribus
-            suscipit!
-          </p>
+          <TextReader content={blog.content} />
         </article>
       </div>
       {/* Blogs */}

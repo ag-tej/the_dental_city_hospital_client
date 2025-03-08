@@ -1,39 +1,72 @@
-import { Suspense } from "react";
+import { AuthProvider } from "./admin/AuthContext";
+import "@mantine/core/styles.css";
+import { MantineProvider } from "@mantine/core";
 import { BrowserRouter, Routes, Route } from "react-router";
-import Loading from "./components/Loading";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Services from "./pages/Services";
-import Career from "./pages/Career";
-import SingleBlog from "./pages/SingleBlog";
-import Contact from "./pages/Contact";
-import Appointment from "./pages/Appointment";
-import Footer from "./components/Footer";
-import Chat from "./components/Chat";
 import ScrollToTop from "./components/ScrollToTop";
+import { Suspense, lazy } from "react";
+import Loading from "./components/Loading";
+
+const UserLayout = lazy(() => import("./layouts/UserLayout"));
+const AdminLayout = lazy(() => import("./layouts/AdminLayout"));
+const ProtectedRoute = lazy(() => import("./admin/ProtectedRoute"));
+const Login = lazy(() => import("./admin/Login"));
+const Home = lazy(() => import("./pages/Home"));
+const Services = lazy(() => import("./pages/Services"));
+const Career = lazy(() => import("./pages/Career"));
+const SingleBlog = lazy(() => import("./pages/SingleBlog"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Appointment = lazy(() => import("./pages/Appointment"));
+const Dashboard = lazy(() => import("./admin/pages/Dashboard"));
+const Doctor = lazy(() => import("./admin/pages/Doctor"));
+const Blog = lazy(() => import("./admin/pages/Blog"));
+const Testimonial = lazy(() => import("./admin/pages/Testimonial"));
+const Vacancy = lazy(() => import("./admin/pages/Vacancy"));
+const AppointmentApplication = lazy(() =>
+  import("./admin/pages/AppointmentApplication")
+);
+const JobApplication = lazy(() => import("./admin/pages/JobApplication"));
+const ContactMessage = lazy(() => import("./admin/pages/ContactMessage"));
+const MailingList = lazy(() => import("./admin/pages/MailingList"));
 
 const App = () => {
   return (
-    <main className="h-screen flex flex-col">
-      <BrowserRouter>
-        <ScrollToTop />
-        <Suspense fallback={<Loading />}>
-          <Navbar />
-          <div className="w-full max-w-screen-2xl mx-auto">
+    <AuthProvider>
+      <MantineProvider withCssVariables>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Suspense fallback={<Loading />}>
             <Routes>
-              <Route index path="/" element={<Home />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/career" element={<Career />} />
-              <Route path="/blog/:slug" element={<SingleBlog />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/appointment" element={<Appointment />} />
+              {/* User Routes */}
+              <Route element={<UserLayout />}>
+                <Route index path="/" element={<Home />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/career" element={<Career />} />
+                <Route path="/blog/:id" element={<SingleBlog />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/appointment" element={<Appointment />} />
+              </Route>
+              {/* Login Route */}
+              <Route path="/login" element={<Login />} />
+              {/* Admin Routes */}
+              <Route element={<ProtectedRoute element={<AdminLayout />} />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/doctor" element={<Doctor />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/testimonial" element={<Testimonial />} />
+                <Route path="/vacancy" element={<Vacancy />} />
+                <Route
+                  path="/appointment-application"
+                  element={<AppointmentApplication />}
+                />
+                <Route path="/job-application" element={<JobApplication />} />
+                <Route path="/contact-message" element={<ContactMessage />} />
+                <Route path="/mailing-list" element={<MailingList />} />
+              </Route>
             </Routes>
-          </div>
-          <Chat />
-          <Footer />
-        </Suspense>
-      </BrowserRouter>
-    </main>
+          </Suspense>
+        </BrowserRouter>
+      </MantineProvider>
+    </AuthProvider>
   );
 };
 
