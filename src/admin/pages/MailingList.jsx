@@ -76,11 +76,7 @@ const ContactMessage = () => {
               mailingLists.map((item) => (
                 <tr
                   key={item._id}
-                  className={`text-gray-900 border-b border-gray-300 hover:bg-primary-white ${
-                    item.read_status
-                      ? "odd:bg-gray-50 even:bg-gray-100"
-                      : "bg-primary-blue-light"
-                  }`}
+                  className="text-gray-900 border-b border-gray-300 hover:bg-primary-white odd:bg-gray-50 even:bg-gray-100"
                 >
                   <th scope="row" className="px-6 py-4 font-medium">
                     {item.email}
