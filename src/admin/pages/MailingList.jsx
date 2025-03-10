@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import moment from "moment";
+import moment from "moment-timezone";
 import useAxios from "../UseAxios";
 import { MdDeleteOutline } from "react-icons/md";
 import { LiaSpinnerSolid } from "react-icons/lia";
@@ -82,7 +82,9 @@ const ContactMessage = () => {
                     {item.email}
                   </th>
                   <td className="px-6 py-4">
-                    {moment(item.createdAt).format("dddd, MMMM D, YYYY")}
+                    {moment(item.createdAt)
+                      .tz("Asia/Kathmandu")
+                      .format("dddd, MMMM D, YYYY")}
                   </td>
                   <td>
                     <div className="px-6 py-4 flex items-center justify-center gap-6">

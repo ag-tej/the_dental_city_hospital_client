@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import moment from "moment";
+import moment from "moment-timezone";
 import useAxios from "../UseAxios";
 import { TbFileCv } from "react-icons/tb";
 import { IoDocumentTextOutline } from "react-icons/io5";
@@ -127,9 +127,9 @@ const JobApplication = () => {
                   <td className="px-6 py-4">{item.phone}</td>
                   <td className="px-6 py-4">{item.applied_position}</td>
                   <td className="px-6 py-4">
-                    {moment(item.earliest_start_date).format(
-                      "dddd, MMMM D, YYYY"
-                    )}
+                    {moment(item.earliest_start_date)
+                      .tz("Asia/Kathmandu")
+                      .format("dddd, MMMM D, YYYY")}
                   </td>
                   <td>
                     <div className="px-6 py-4 flex items-center justify-center gap-6">

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useParams } from "react-router";
-import moment from "moment";
+import moment from "moment-timezone";
 import useAxios from "../admin/UseAxios";
 import TextReader from "../admin/components/TextReader";
 import BlogCarousel from "../components/BlogCarousel";
@@ -40,9 +40,9 @@ const SingleBlog = () => {
           />
           <div className="flex gap-5 justify-between items-center mb-8">
             <p className="text-responsive-text text-primary-blue-dark tracking-wide">
-              {`${moment(blog.createdAt).format(
-                "dddd, MMMM D, YYYY"
-              )} | Author: ${blog.author}`}
+              {`${moment(blog.createdAt)
+                .tz("Asia/Kathmandu")
+                .format("dddd, MMMM D, YYYY")} | Author: ${blog.author}`}
             </p>
             <div className="flex items-center gap-2 mt-auto">
               <img

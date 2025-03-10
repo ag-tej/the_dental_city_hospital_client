@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { FaDeleteLeft } from "react-icons/fa6";
 import useAxios from "../admin/UseAxios";
-import moment from "moment";
+import moment from "moment-timezone";
 import TextReader from "../admin/components/TextReader";
 import careerHero from "../assets/career-hero.webp";
 
@@ -134,7 +134,9 @@ const Career = () => {
                       <p className="text-responsive-text text-gray-700">
                         Apply Before:{" "}
                         <span className="text-primary-blue-dark font-medium">
-                          {moment(item.last_date).format("dddd, MMMM D, YYYY")}
+                          {moment(item.last_date)
+                            .tz("Asia/Kathmandu")
+                            .format("dddd, MMMM D, YYYY")}
                         </span>
                       </p>
                     </div>

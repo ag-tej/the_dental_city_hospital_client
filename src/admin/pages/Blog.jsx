@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import moment from "moment";
+import moment from "moment-timezone";
 import useAxios from "../UseAxios";
 import TextEditor from "../components/TextEditor";
 import eye from "../../assets/eye.svg";
@@ -130,7 +130,9 @@ const Blog = () => {
                 />
                 <div className="p-5 flex flex-col">
                   <p className="text-responsive-text text-primary-blue-dark tracking-wide">
-                    {moment(blog.createdAt).format("dddd, MMMM D, YYYY")}
+                    {moment(blog.createdAt)
+                      .tz("Asia/Kathmandu")
+                      .format("dddd, MMMM D, YYYY")}
                   </p>
                   <p className="text-responsive-text text-primary-blue-dark tracking-wide mb-3">
                     {`Author: ${blog.author}`}

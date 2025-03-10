@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import moment from "moment";
+import moment from "moment-timezone";
 import useAxios from "../UseAxios";
 import TextEditor from "../components/TextEditor";
 import TextReader from "../components/TextReader";
@@ -112,9 +112,9 @@ const Vacancy = () => {
                 {vacancy.job_title}
               </p>
               <p className="text-base text-gray-700 mb-3">
-                {`Apply Before: ${moment(vacancy.last_date).format(
-                  "dddd, MMMM D, YYYY"
-                )}`}
+                {`Apply Before: ${moment(vacancy.last_date)
+                  .tz("Asia/Kathmandu")
+                  .format("dddd, MMMM D, YYYY")}`}
               </p>
               <div className="mb-3">
                 <p className="text-sm text-gray-500 mb-2">Job Description:</p>
@@ -187,7 +187,9 @@ const Vacancy = () => {
               id="last_date"
               name="last_date"
               placeholder="Last Date"
-              value={moment(formData.last_date).format("YYYY-MM-DD")}
+              value={moment(formData.last_date)
+                .tz("Asia/Kathmandu")
+                .format("YYYY-MM-DD")}
               onChange={(e) =>
                 setFormData({ ...formData, last_date: e.target.value })
               }

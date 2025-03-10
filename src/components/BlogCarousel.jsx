@@ -5,7 +5,7 @@ import { Autoplay, Navigation } from "swiper/modules";
 import { NavLink, useLocation } from "react-router";
 import useAxios from "../admin/UseAxios";
 import { useCallback, useEffect, useRef, useState } from "react";
-import moment from "moment";
+import moment from "moment-timezone";
 import eye from "../assets/eye.svg";
 
 const BlogCarousel = () => {
@@ -76,9 +76,9 @@ const BlogCarousel = () => {
                       />
                       <div className="p-5 flex flex-col">
                         <p className="text-responsive-text text-primary-blue-dark tracking-wide mb-3">
-                          {`${moment(item.createdAt).format(
-                            "dddd, MMMM D, YYYY"
-                          )} | ${item.author}`}
+                          {`${moment(item.createdAt)
+                            .tz("Asia/Kathmandu")
+                            .format("dddd, MMMM D, YYYY")} | ${item.author}`}
                         </p>
                         <p className="text-responsive-text xl:text-lg font-normal text-gray-900 tracking-wide mb-3">
                           {item.title}
