@@ -1,19 +1,19 @@
 import axios from "axios";
 import { UseAuth } from "./UseAuth";
-import { useNavigate } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const useAxios = () => {
   const { logout } = UseAuth();
-  const navigate = useNavigate();
 
   // Create an Axios instance
-  const axiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_API,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  const axiosInstance = useRef(
+    axios.create({
+      baseURL: import.meta.env.VITE_API,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+  ).current;
 
   // Axios Interceptor to check for authentication errors
   useEffect(() => {
@@ -24,7 +24,6 @@ const useAxios = () => {
       (error) => {
         if (error.response && error.response.status === 401) {
           logout();
-          navigate("/login");
         }
         return Promise.reject(error);
       }
@@ -33,7 +32,7 @@ const useAxios = () => {
     return () => {
       axiosInstance.interceptors.response.eject(interceptor);
     };
-  }, [axiosInstance.interceptors.response, logout, navigate]);
+  }, [axiosInstance, logout]);
 
   return axiosInstance;
 };
