@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import moment from "moment-timezone";
 import useAxios from "../UseAxios";
 import TextEditor from "../components/TextEditor";
@@ -7,7 +7,7 @@ import { NavLink } from "react-router";
 
 const Blog = () => {
   const axiosInstance = useAxios();
-  const axiosRef = useRef(axiosInstance);
+  const [fetching, setFetching] = useState(false);
   const [blogs, setBlogs] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
@@ -27,12 +27,14 @@ const Blog = () => {
 
   const fetchBlogs = useCallback(async () => {
     try {
-      const response = await axiosRef.current.get("/blog");
+      setFetching(true);
+      const response = await axiosInstance.get("/blog");
       if (response.data.success) setBlogs(response.data.data);
     } catch (error) {
       window.alert(error.response?.data?.message || "Something went wrong");
     }
-  }, []);
+    setFetching(false);
+  }, [axiosInstance]);
 
   useEffect(() => {
     fetchBlogs();
@@ -182,6 +184,10 @@ const Blog = () => {
               </div>
             </div>
           ))
+        ) : fetching ? (
+          <p className="text-primary-blue-dark font-medium italic">
+            Fetching data...
+          </p>
         ) : (
           <p className="text-red-600 font-medium italic">Nothing to show!</p>
         )}

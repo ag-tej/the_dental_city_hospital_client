@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FaDeleteLeft } from "react-icons/fa6";
 import useAxios from "../admin/UseAxios";
 import moment from "moment-timezone";
@@ -7,7 +7,6 @@ import careerHero from "../assets/career-hero.webp";
 
 const Career = () => {
   const axiosInstance = useAxios();
-  const axiosRef = useRef(axiosInstance);
   const [vacancies, setVacancies] = useState([]);
   const [appliedPosition, setAppliedPosition] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -19,12 +18,12 @@ const Career = () => {
 
   const fetchVacancies = useCallback(async () => {
     try {
-      const response = await axiosRef.current.get("/vacancy/current-opening");
+      const response = await axiosInstance.get("/vacancy/current-opening");
       if (response.data.success) setVacancies(response.data.data);
     } catch (error) {
       window.alert(error.response?.data?.message || "Something went wrong");
     }
-  }, []);
+  }, [axiosInstance]);
 
   useEffect(() => {
     fetchVacancies();

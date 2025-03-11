@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import useAxios from "../UseAxios";
 import { LuEye, LuEyeClosed } from "react-icons/lu";
 import { MdDeleteOutline } from "react-icons/md";
@@ -6,7 +6,7 @@ import { LiaSpinnerSolid } from "react-icons/lia";
 
 const ContactMessage = () => {
   const axiosInstance = useAxios();
-  const axiosRef = useRef(axiosInstance);
+  const [fetching, setFetching] = useState(false);
   const [contactMessages, setContactMessages] = useState([]);
   const [loadingAction, setLoadingAction] = useState({
     readStatus: null, // Tracks which message is currently changing read status
@@ -15,14 +15,16 @@ const ContactMessage = () => {
 
   const fetchContactMessages = useCallback(async () => {
     try {
-      const response = await axiosRef.current.get("/contactMessage", {
+      setFetching(true);
+      const response = await axiosInstance.get("/contactMessage", {
         withCredentials: true,
       });
       if (response.data.success) setContactMessages(response.data.data);
     } catch (error) {
       window.alert(error.response?.data?.message || "Something went wrong");
     }
-  }, []);
+    setFetching(false);
+  }, [axiosInstance]);
 
   useEffect(() => {
     fetchContactMessages();
@@ -146,10 +148,17 @@ const ContactMessage = () => {
           </tbody>
         </table>
       </div>
-      {contactMessages && contactMessages.length <= 0 && (
-        <p className="text-red-600 font-medium italic text-center mt-8">
-          Nothing to show!
+      {fetching ? (
+        <p className="text-primary-blue-dark font-medium italic text-center mt-8">
+          Fetching data...
         </p>
+      ) : (
+        contactMessages &&
+        contactMessages.length <= 0 && (
+          <p className="text-red-600 font-medium italic text-center mt-8">
+            Nothing to show!
+          </p>
+        )
       )}
     </div>
   );

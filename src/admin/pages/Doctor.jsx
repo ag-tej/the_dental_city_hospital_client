@@ -8,7 +8,6 @@ import maleDoctor from "../../assets/male-doctor.jpg";
 
 const Doctor = () => {
   const axiosInstance = useAxios();
-  const axiosRef = useRef(axiosInstance);
   const [doctors, setDoctors] = useState([]);
   const [formData, setFormData] = useState({
     profile_image: null,
@@ -19,6 +18,7 @@ const Doctor = () => {
     instagram_link: "",
     linkedin_link: "",
   });
+  const [fetching, setFetching] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
   const [editingId, setEditingId] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -34,12 +34,14 @@ const Doctor = () => {
 
   const fetchDoctors = useCallback(async () => {
     try {
-      const response = await axiosRef.current.get("/doctor");
+      setFetching(true);
+      const response = await axiosInstance.get("/doctor");
       if (response.data.success) setDoctors(response.data.data);
     } catch (error) {
       window.alert(error.response?.data?.message || "Something went wrong");
     }
-  }, []);
+    setFetching(false);
+  }, [axiosInstance]);
 
   useEffect(() => {
     fetchDoctors();
@@ -296,6 +298,10 @@ const Doctor = () => {
               </div>
             </div>
           ))
+        ) : fetching ? (
+          <p className="text-primary-blue-dark font-medium italic">
+            Fetching data...
+          </p>
         ) : (
           <p className="text-red-600 font-medium italic">Nothing to show!</p>
         )}

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import moment from "moment-timezone";
 import useAxios from "../UseAxios";
 import TextEditor from "../components/TextEditor";
@@ -6,13 +6,13 @@ import TextReader from "../components/TextReader";
 
 const Vacancy = () => {
   const axiosInstance = useAxios();
-  const axiosRef = useRef(axiosInstance);
   const [vacancies, setVacancies] = useState([]);
   const [formData, setFormData] = useState({
     job_title: "",
     description: "",
     last_date: "",
   });
+  const [fetching, setFetching] = useState(false);
   const [editingId, setEditingId] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [savingAction, setSavingAction] = useState(false);
@@ -24,12 +24,14 @@ const Vacancy = () => {
 
   const fetchVacancies = useCallback(async () => {
     try {
-      const response = await axiosRef.current.get("/vacancy");
+      setFetching(true);
+      const response = await axiosInstance.get("/vacancy");
       if (response.data.success) setVacancies(response.data.data);
     } catch (error) {
       window.alert(error.response?.data?.message || "Something went wrong");
     }
-  }, []);
+    setFetching(false);
+  }, [axiosInstance]);
 
   useEffect(() => {
     fetchVacancies();
@@ -143,6 +145,10 @@ const Vacancy = () => {
               </div>
             </div>
           ))
+        ) : fetching ? (
+          <p className="text-primary-blue-dark font-medium italic">
+            Fetching data...
+          </p>
         ) : (
           <p className="text-red-600 font-medium italic">Nothing to show!</p>
         )}

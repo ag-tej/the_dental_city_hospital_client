@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
@@ -35,26 +35,25 @@ const Home = () => {
   };
 
   const axiosInstance = useAxios();
-  const axiosRef = useRef(axiosInstance);
   const [doctors, setDoctors] = useState([]);
   const [testimonials, setTestimonials] = useState([]);
 
   const fetchTestimonials = useCallback(async () => {
     try {
-      const response = await axiosRef.current.get("/testimonial");
+      const response = await axiosInstance.get("/testimonial");
       if (response.data.success) setTestimonials(response.data.data);
     } catch (error) {
       window.alert(error.response?.data?.message || "Something went wrong");
     }
-  }, []);
+  }, [axiosInstance]);
   const fetchDoctors = useCallback(async () => {
     try {
-      const response = await axiosRef.current.get("/doctor");
+      const response = await axiosInstance.get("/doctor");
       if (response.data.success) setDoctors(response.data.data);
     } catch (error) {
       window.alert(error.response?.data?.message || "Something went wrong");
     }
-  }, []);
+  }, [axiosInstance]);
 
   useEffect(() => {
     fetchDoctors();

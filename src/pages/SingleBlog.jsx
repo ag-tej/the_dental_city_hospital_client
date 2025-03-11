@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router";
 import moment from "moment-timezone";
 import useAxios from "../admin/UseAxios";
@@ -8,18 +8,17 @@ import eye from "../assets/eye.svg";
 
 const SingleBlog = () => {
   const axiosInstance = useAxios();
-  const axiosRef = useRef(axiosInstance);
   const { id } = useParams();
   const [blog, setBlog] = useState([]);
 
   const fetchBlog = useCallback(async () => {
     try {
-      const response = await axiosRef.current.get(`/blog/${id}`);
+      const response = await axiosInstance.get(`/blog/${id}`);
       if (response.data.success) setBlog(response.data.data);
     } catch (error) {
       window.alert(error.response?.data?.message || "Something went wrong");
     }
-  }, [id]);
+  }, [id, axiosInstance]);
 
   useEffect(() => {
     fetchBlog();

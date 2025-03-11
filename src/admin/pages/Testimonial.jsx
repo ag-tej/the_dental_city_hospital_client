@@ -1,14 +1,14 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import useAxios from "../UseAxios";
 
 const Testimonial = () => {
   const axiosInstance = useAxios();
-  const axiosRef = useRef(axiosInstance);
   const [testimonials, setTestimonials] = useState([]);
   const [formData, setFormData] = useState({
     client_name: "",
     client_message: "",
   });
+  const [fetching, setFetching] = useState(false);
   const [editingId, setEditingId] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [savingAction, setSavingAction] = useState(false);
@@ -16,12 +16,14 @@ const Testimonial = () => {
 
   const fetchTestimonials = useCallback(async () => {
     try {
-      const response = await axiosRef.current.get("/testimonial");
+      setFetching(true);
+      const response = await axiosInstance.get("/testimonial");
       if (response.data.success) setTestimonials(response.data.data);
     } catch (error) {
       window.alert(error.response?.data?.message || "Something went wrong");
     }
-  }, []);
+    setFetching(false);
+  }, [axiosInstance]);
 
   useEffect(() => {
     fetchTestimonials();
@@ -128,6 +130,10 @@ const Testimonial = () => {
               </div>
             </div>
           ))
+        ) : fetching ? (
+          <p className="text-primary-blue-dark font-medium italic">
+            Fetching data...
+          </p>
         ) : (
           <p className="text-red-600 font-medium italic">Nothing to show!</p>
         )}

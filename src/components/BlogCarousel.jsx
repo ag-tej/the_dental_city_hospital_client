@@ -4,24 +4,23 @@ import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
 import { NavLink, useLocation } from "react-router";
 import useAxios from "../admin/UseAxios";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import moment from "moment-timezone";
 import eye from "../assets/eye.svg";
 
 const BlogCarousel = () => {
   const location = useLocation();
   const axiosInstance = useAxios();
-  const axiosRef = useRef(axiosInstance);
   const [blogs, setBlogs] = useState([]);
 
   const fetchBlogs = useCallback(async () => {
     try {
-      const response = await axiosRef.current.get("/blog/no-content");
+      const response = await axiosInstance.get("/blog/no-content");
       if (response.data.success) setBlogs(response.data.data);
     } catch (error) {
       window.alert(error.response?.data?.message || "Something went wrong");
     }
-  }, []);
+  }, [axiosInstance]);
 
   useEffect(() => {
     fetchBlogs();

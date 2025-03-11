@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import moment from "moment-timezone";
 import useAxios from "../UseAxios";
 import { TbFileCv } from "react-icons/tb";
@@ -9,7 +9,7 @@ import { LiaSpinnerSolid } from "react-icons/lia";
 
 const JobApplication = () => {
   const axiosInstance = useAxios();
-  const axiosRef = useRef(axiosInstance);
+  const [fetching, setFetching] = useState(false);
   const [jobApplications, setJobApplications] = useState([]);
   const [loadingAction, setLoadingAction] = useState({
     readStatus: null, // Tracks which application is currently changing read status
@@ -18,14 +18,16 @@ const JobApplication = () => {
 
   const fetchJobApplications = useCallback(async () => {
     try {
-      const response = await axiosRef.current.get("/jobApplication", {
+      setFetching(true);
+      const response = await axiosInstance.get("/jobApplication", {
         withCredentials: true,
       });
       if (response.data.success) setJobApplications(response.data.data);
     } catch (error) {
       window.alert(error.response?.data?.message || "Something went wrong");
     }
-  }, []);
+    setFetching(false);
+  }, [axiosInstance]);
 
   useEffect(() => {
     fetchJobApplications();
@@ -186,10 +188,17 @@ const JobApplication = () => {
           </tbody>
         </table>
       </div>
-      {jobApplications && jobApplications.length <= 0 && (
-        <p className="text-red-600 font-medium italic text-center mt-8">
-          Nothing to show!
+      {fetching ? (
+        <p className="text-primary-blue-dark font-medium italic text-center mt-8">
+          Fetching data...
         </p>
+      ) : (
+        jobApplications &&
+        jobApplications.length <= 0 && (
+          <p className="text-red-600 font-medium italic text-center mt-8">
+            Nothing to show!
+          </p>
+        )
       )}
     </div>
   );

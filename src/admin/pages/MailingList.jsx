@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import moment from "moment-timezone";
 import useAxios from "../UseAxios";
 import { MdDeleteOutline } from "react-icons/md";
@@ -6,7 +6,7 @@ import { LiaSpinnerSolid } from "react-icons/lia";
 
 const ContactMessage = () => {
   const axiosInstance = useAxios();
-  const axiosRef = useRef(axiosInstance);
+  const [fetching, setFetching] = useState(false);
   const [mailingLists, setMailingLists] = useState([]);
   const [loadingAction, setLoadingAction] = useState({
     delete: null, // Tracks which mailing list is currently being deleted
@@ -14,14 +14,16 @@ const ContactMessage = () => {
 
   const fetchMailingLists = useCallback(async () => {
     try {
-      const response = await axiosRef.current.get("/mailingList", {
+      setFetching(true);
+      const response = await axiosInstance.get("/mailingList", {
         withCredentials: true,
       });
       if (response.data.success) setMailingLists(response.data.data);
     } catch (error) {
       window.alert(error.response?.data?.message || "Something went wrong");
     }
-  }, []);
+    setFetching(false);
+  }, [axiosInstance]);
 
   useEffect(() => {
     fetchMailingLists();
@@ -106,10 +108,17 @@ const ContactMessage = () => {
           </tbody>
         </table>
       </div>
-      {mailingLists && mailingLists.length <= 0 && (
-        <p className="text-red-600 font-medium italic text-center mt-8">
-          Nothing to show!
+      {fetching ? (
+        <p className="text-primary-blue-dark font-medium italic text-center mt-8">
+          Fetching data...
         </p>
+      ) : (
+        mailingLists &&
+        mailingLists.length <= 0 && (
+          <p className="text-red-600 font-medium italic text-center mt-8">
+            Nothing to show!
+          </p>
+        )
       )}
     </div>
   );
