@@ -133,6 +133,7 @@ const Doctor = () => {
         fetchDoctors();
         closeModal();
         setImagePreview(null);
+        window.alert(response.data.message);
       }
     } catch (error) {
       window.alert(error.response?.data?.message || "Error saving doctor");
@@ -147,7 +148,10 @@ const Doctor = () => {
       const response = await axiosInstance.delete(`/doctor/delete/${id}`, {
         withCredentials: true,
       });
-      if (response.data.success) fetchDoctors();
+      if (response.data.success) {
+        fetchDoctors();
+        window.alert(response.data.message);
+      }
     } catch (error) {
       window.alert(error.response?.data?.message || "Error deleting doctor");
     }

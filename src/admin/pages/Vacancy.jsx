@@ -58,6 +58,7 @@ const Vacancy = () => {
       if (response.data.success) {
         fetchVacancies();
         closeModal();
+        window.alert(response.data.message);
       }
     } catch (error) {
       window.alert(error.response?.data?.message || "Error saving vacancy");
@@ -72,7 +73,10 @@ const Vacancy = () => {
       const response = await axiosInstance.delete(`/vacancy/delete/${id}`, {
         withCredentials: true,
       });
-      if (response.data.success) fetchVacancies();
+      if (response.data.success) {
+        fetchVacancies();
+        window.alert(response.data.message);
+      }
     } catch (error) {
       window.alert(error.response?.data?.message || "Error deleting vacancy");
     }

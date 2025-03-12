@@ -39,6 +39,7 @@ const ContactMessage = () => {
       });
       if (response.data.success) {
         fetchMailingLists();
+        window.alert(response.data.message);
       }
     } catch (error) {
       window.alert(

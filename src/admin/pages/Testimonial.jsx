@@ -51,6 +51,7 @@ const Testimonial = () => {
       if (response.data.success) {
         fetchTestimonials();
         closeModal();
+        window.alert(response.data.message);
       }
     } catch (error) {
       window.alert(error.response?.data?.message || "Error saving testimonial");
@@ -65,7 +66,10 @@ const Testimonial = () => {
       const response = await axiosInstance.delete(`/testimonial/delete/${id}`, {
         withCredentials: true,
       });
-      if (response.data.success) fetchTestimonials();
+      if (response.data.success) {
+        fetchTestimonials();
+        window.alert(response.data.message);
+      }
     } catch (error) {
       window.alert(
         error.response?.data?.message || "Error deleting testimonial"

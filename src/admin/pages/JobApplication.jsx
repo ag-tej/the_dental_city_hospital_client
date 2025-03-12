@@ -43,6 +43,7 @@ const JobApplication = () => {
       );
       if (response.data.success) {
         fetchJobApplications();
+        window.alert(response.data.message);
       }
     } catch (error) {
       window.alert(
@@ -66,6 +67,7 @@ const JobApplication = () => {
       );
       if (response.data.success) {
         fetchJobApplications();
+        window.alert(response.data.message);
       }
     } catch (error) {
       window.alert(

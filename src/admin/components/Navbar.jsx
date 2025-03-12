@@ -39,7 +39,7 @@ const Navbar = () => {
 
   return (
     <div className="bg-primary-blue-dark min-h-screen p-5 fixed">
-      <a href="/dashboard" className="flex items-center gap-2 w-fit mb-8">
+      <a href="/doctor" className="flex items-center gap-2 w-fit mb-8">
         <img
           src={logo}
           loading="lazy"

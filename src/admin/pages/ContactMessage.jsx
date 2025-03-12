@@ -40,6 +40,7 @@ const ContactMessage = () => {
       );
       if (response.data.success) {
         fetchContactMessages();
+        window.alert(response.data.message);
       }
     } catch (error) {
       window.alert(
@@ -61,6 +62,7 @@ const ContactMessage = () => {
       );
       if (response.data.success) {
         fetchContactMessages();
+        window.alert(response.data.message);
       }
     } catch (error) {
       window.alert(error.response?.data?.message || "Error deleting message");

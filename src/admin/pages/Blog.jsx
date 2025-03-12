@@ -69,6 +69,7 @@ const Blog = () => {
         fetchBlogs();
         closeModal();
         setImagePreview(null);
+        window.alert(response.data.message);
       }
     } catch (error) {
       window.alert(error.response?.data?.message || "Error saving blog");
@@ -83,7 +84,10 @@ const Blog = () => {
       const response = await axiosInstance.delete(`/blog/delete/${id}`, {
         withCredentials: true,
       });
-      if (response.data.success) fetchBlogs();
+      if (response.data.success) {
+        fetchBlogs();
+        window.alert(response.data.message);
+      }
     } catch (error) {
       window.alert(error.response?.data?.message || "Error deleting blog");
     }

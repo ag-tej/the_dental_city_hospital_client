@@ -16,7 +16,6 @@ const Career = lazy(() => import("./pages/Career"));
 const SingleBlog = lazy(() => import("./pages/SingleBlog"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Appointment = lazy(() => import("./pages/Appointment"));
-const Dashboard = lazy(() => import("./admin/pages/Dashboard"));
 const Doctor = lazy(() => import("./admin/pages/Doctor"));
 const Blog = lazy(() => import("./admin/pages/Blog"));
 const Testimonial = lazy(() => import("./admin/pages/Testimonial"));
@@ -49,7 +48,6 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               {/* Admin Routes */}
               <Route element={<ProtectedRoute element={<AdminLayout />} />}>
-                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/doctor" element={<Doctor />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/testimonial" element={<Testimonial />} />
