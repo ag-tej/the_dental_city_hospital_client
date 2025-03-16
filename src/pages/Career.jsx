@@ -258,6 +258,7 @@ const Career = () => {
                 </label>
                 <input
                   type="date"
+                  min={new Date().toISOString().split("T")[0]}
                   id="earliest_start_date"
                   name="earliest_start_date"
                   className={`input bg-transparent border border-white text-primary-white ${
