@@ -167,9 +167,9 @@ const JobApplication = () => {
                         {loadingAction.readStatus === item._id ? (
                           <LiaSpinnerSolid className="text-xl text-primary-blue-dark animate-spin" />
                         ) : item.read_status ? (
-                          <LuEyeClosed className="text-xl text-primary-blue- cursor-pointer" />
+                          <LuEyeClosed className="text-xl text-primary-blue-dark cursor-pointer" />
                         ) : (
-                          <LuEye className="text-xl text-primary-blue- cursor-pointer" />
+                          <LuEye className="text-xl text-primary-blue-dark cursor-pointer" />
                         )}
                       </button>
                       <button
