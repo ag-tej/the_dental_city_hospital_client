@@ -164,3 +164,23 @@ select::-ms-expand {
 .m_dd3f7539 {
   border-color: #6a7282 !important;
 }
+
+/* React Big Calendar Styles */
+.rbc-allday-cell {
+  display: none;
+}
+
+.rbc-row {
+  height: 60px;
+}
+
+.rbc-header {
+  font-size: medium !important;
+  font-weight: 600 !important;
+  border-bottom: none !important;
+  padding-top: 16px !important;
+}
+
+.rbc-timeslot-group {
+  min-height: 60px !important;
+}

@@ -5,6 +5,7 @@ import instagram from "../../assets/instagram.svg";
 import linkedin from "../../assets/linkedin.svg";
 import femaleDoctor from "../../assets/female-doctor.jpg";
 import maleDoctor from "../../assets/male-doctor.jpg";
+import { NavLink } from "react-router";
 
 const Doctor = () => {
   const axiosInstance = useAxios();
@@ -274,14 +275,12 @@ const Doctor = () => {
                 </div>
               </div>
               <div className="mt-auto pt-3 border-t border-black/25 flex justify-end gap-3">
-                <button
+                <NavLink
                   to={`/doctor/${doctor._id}`}
-                  target="_blank"
-                  rel="noreferrer noopener"
                   className="button rounded py-1.5 bg-green-700"
                 >
-                  View
-                </button>
+                  Schedule
+                </NavLink>
                 <button
                   onClick={() => openModal(doctor)}
                   className="button rounded py-1.5"
